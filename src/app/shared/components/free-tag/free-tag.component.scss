@@ -1,0 +1,22 @@
+@import '../../../../styles/_sizes.scss';
+@import '../../../../styles/colors';
+
+:host {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 50%;
+  padding: 5px;
+  margin-top: $standard-size;
+  background-color: $accent-light;
+  color: $white;
+  font-weight: 400;
+  font-size: 12px;
+  position: absolute;
+  top: -15px;
+  left: calc(100% - 25px);
+  transform: rotate(25deg);
+  border: 2px solid $accent;
+  box-shadow: 2px 2px 5px 2px #000;
+}

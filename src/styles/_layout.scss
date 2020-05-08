@@ -1,0 +1,26 @@
+@import "media";
+@import "sizes";
+
+.page__container {
+  overflow-y: auto;
+  width: 100%;
+  height: calc(100vh - 70px);
+  padding-top: 70px;
+}
+
+.content__container {
+  margin: 0 auto;
+  width: 90%;
+
+  @media (min-width: $md) {
+    & {
+      width: 80%;
+    }
+  }
+
+  @media (min-width: $lg) {
+    & {
+      width: 70%;
+    }
+  }
+}

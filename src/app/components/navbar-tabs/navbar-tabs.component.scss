@@ -1,0 +1,73 @@
+@import "../../../styles/colors";
+@import "../../../styles/sizes";
+
+.nav__tabs-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+}
+
+.nav__tabs {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  color: $white;
+}
+
+.active__bar {
+  width: 100%;
+  height: 5px;
+  content: '';
+  position: absolute;
+  bottom: 0;
+}
+
+.nav__tab {
+  cursor: pointer;
+  position: relative;
+  padding-top: 10px;
+  line-height: 30px;
+  margin: 0 10px;
+
+  &.active {
+    .active__bar {
+      transition: .6s ease-in-out;
+    }
+  }
+
+  &:nth-child(odd) {
+    .active__bar {
+      opacity: 0;
+      left: 100%;
+      background-color: $white;
+    }
+
+    &.active {
+      .active__bar {
+        opacity: 1;
+        left: 0;
+      }
+    }
+  }
+
+  &:nth-child(even) {
+    .active__bar {
+      opacity: 0;
+      right: 100%;
+      background-color: $white;
+    }
+
+    &.active {
+      .active__bar {
+        opacity: 1;
+        right: 0;
+      }
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+}

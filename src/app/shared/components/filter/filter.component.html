@@ -1,0 +1,29 @@
+<div class="card">
+  <h5 class="subtitle">
+    Filter to find the best tech events ever!
+  </h5>
+  <form [formGroup]="formGroup">
+    <div class="form__section">
+      <label>
+        Event / City name
+      </label>
+      <input type="text"
+             placeholder="Event / City name"
+             [formControl]="nameControl"/>
+    </div>
+    <div class="form__section">
+      <label>
+        <input type="checkbox"
+               (change)="onFilter.emit(formGroup.value)"
+               [formControl]="freeEventControl"/>
+        Free
+      </label>
+    </div>
+    <app-button
+      (onClick)="resetFilter()"
+      type="secondary"
+      text="Reset">
+    </app-button>
+  </form>
+</div>
+

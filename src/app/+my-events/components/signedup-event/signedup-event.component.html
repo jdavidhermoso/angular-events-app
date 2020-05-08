@@ -1,0 +1,17 @@
+<div class="event__item">
+  <app-event-info
+    class="event__info"
+    [name]="eventItem.name"
+    [city]="eventItem.city.name"
+    [isFree]="eventItem.isFree"
+    [startDate]="eventItem.startDate | date:'hh:mm'"
+    [duration]="eventItem.duration">
+  </app-event-info>
+  <app-event-actions>
+    <app-button
+      type="danger"
+      text="Cancel"
+      (onClick)="onCancelClick()">
+    </app-button>
+  </app-event-actions>
+</div>

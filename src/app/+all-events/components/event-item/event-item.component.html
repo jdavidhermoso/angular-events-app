@@ -1,0 +1,21 @@
+<div class="event__item">
+  <app-event-info
+    class="event__info"
+    [name]="eventItem.name"
+    [city]="eventItem.city.name"
+    [isFree]="eventItem.isFree"
+    [startDate]="eventItem.startDate | date:'hh:mm'"
+    [duration]="eventItem.duration">
+  </app-event-info>
+  <app-event-actions>
+    <app-button
+      class="event__item-cta"
+      type="primary"
+      text="Sign up!"
+      (onClick)="onSignUpClicked()">
+    </app-button>
+  </app-event-actions>
+  <app-free-tag
+    *ngIf="eventItem.isFree"
+    [isFree]="eventItem.isFree"></app-free-tag>
+</div>

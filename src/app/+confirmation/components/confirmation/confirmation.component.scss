@@ -1,0 +1,68 @@
+@import "../../../../styles/sizes";
+@import "../../../../styles/colors";
+@import "../../../../styles/media";
+
+.confirmation__container {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  overflow: hidden;
+  align-items: center;
+}
+
+.confirmation {
+  width: 90%;
+  background-color: $white;
+  position: absolute;
+  border: 1px solid $grey;
+  box-shadow: 5px 15px 15px 5px #000;
+  border-radius: $border-radius;
+
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+
+  &__header, &__footer {
+    padding: $standard-size;
+  }
+
+  &__header {
+    text-align: center;
+    border-bottom: 1px solid $grey;
+    color: $darker;
+    background: $gradient;
+  }
+
+  &__body {
+    flex-grow: 2;
+    padding: $standard-size * 2;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .confirmation__reject-btn {
+    margin-left: $standard-size;
+  }
+
+  @media (min-width: $md) {
+    & {
+      width: 50%;
+    }
+  }
+
+  @media (min-width: $lg) {
+    & {
+      width: 40%;
+    }
+  }
+}

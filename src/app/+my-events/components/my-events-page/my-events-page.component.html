@@ -1,0 +1,26 @@
+<h2 class="page__title">
+  My events page
+</h2>
+<app-events-list>
+  <app-no-items *ngIf="!(signedUpEvents | async).length">
+    <p class="text">
+      Hey! You didn't sign up in any event!
+    </p>
+    <p class="text">
+      Search events to shaping up with latest technologies!
+    </p>
+    <app-button
+      (onClick)="onCtaClicked()"
+      type="primary"
+      text="Find events!">
+    </app-button>
+  </app-no-items>
+  <app-events-of-day
+    *ngFor="let event of signedUpEvents | async"
+    [eventsDate]="event.startDate">
+    <app-signedup-event
+      [eventItem]="event"
+      (onCancel)="onCancelEventAttendance(event.id)">
+    </app-signedup-event>
+  </app-events-of-day>
+</app-events-list>

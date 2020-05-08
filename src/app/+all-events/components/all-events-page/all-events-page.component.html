@@ -1,0 +1,36 @@
+<h2 class="page__title">
+  All events page
+</h2>
+<app-sign-up-confirmation-modal
+  *ngIf="!!(toggleConfirmation | async)"
+  [eventName]="tempEventToConfirmSignUp?.name"
+  (onAccept)="onConfirmSignUp()"
+  (onReject)="onRejectSignUp()">
+</app-sign-up-confirmation-modal>
+<app-filter
+  (onFilter)="onFilter($event)"
+></app-filter>
+<app-events-list>
+  <p class="events__results-number text" *ngIf="filteredEventsDays.length">
+    We found {{filteredEventsDays.length}} great tech events for you!
+  </p>
+  <app-no-items *ngIf="!filteredEventsDays.length">
+    <p class="text">
+      We couldn't find any event!
+    </p>
+    <p class="text">
+      Reset your filters to enjoy the best tech events!
+    </p>
+  </app-no-items>
+  <div *ngIf="filteredEventsDays">
+    <app-events-of-day
+      *ngFor="let eventDay of filteredEventsDays"
+      [eventsDate]="eventDay[0].startDate">
+      <app-event-item
+        *ngFor="let event of eventDay"
+        [eventItem]="event"
+        (onSignUp)="onEventSignUp(event)">
+      </app-event-item>
+    </app-events-of-day>
+  </div>
+</app-events-list>

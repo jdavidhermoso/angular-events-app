@@ -1,0 +1,202 @@
+[
+  {
+    "id": 0,
+    "price": 0,
+    "name": "Flexbox and Grid: Build great layouts",
+    "city": 9,
+    "startDate": "2019-07-14T02:00:00+00:00",
+    "endDate": "2019-07-14T03:00:00+00:00"
+  },
+  {
+    "id": 1,
+    "price": 0,
+    "name": "Transition from backend to frontend",
+    "city": 1,
+    "startDate": "2019-06-09T21:30:00+00:00",
+    "endDate": "2019-06-09T23:50:00+00:00"
+  },
+  {
+    "id": 2,
+    "price": 105.00,
+    "name": "Angular PWAs: Conquer them all",
+    "city": 7,
+    "startDate": "2019-08-17T09:00:00+00:00",
+    "endDate": "2019-08-17T10:00:00+00:00"
+  },
+  {
+    "id": 3,
+    "price": 0,
+    "name": "Can I have a job in tech knowing just HTML and CSS?",
+    "city": 8,
+    "startDate": "2019-07-03T17:00:00+00:00",
+    "endDate": "2019-07-03T18:30:00+00:00"
+  },
+  {
+    "id": 4,
+    "price": 0,
+    "name": "Deploy your website with AWS S3",
+    "city": 3,
+    "startDate": "2019-07-07T13:00:00+00:00",
+    "endDate": "2019-07-07T15:00:00+00:00"
+  },
+  {
+    "id": 5,
+    "price": 24.5,
+    "name": "Arduino: First steps",
+    "city": 5,
+    "startDate": "2019-08-26T14:00:00+00:00",
+    "endDate": "2019-08-26T15:30:00+00:00"
+  },
+  {
+    "id": 6,
+    "price": 12.45,
+    "name": "How to build a CI pipline with Azure",
+    "city": 3,
+    "startDate": "2019-07-21T20:00:00+00:00",
+    "endDate": "2019-07-21T22:00:00+00:00"
+  },
+  {
+    "id": 7,
+    "price": 0,
+    "name": "Writing a tech blog: How to start!",
+    "city": 5,
+    "startDate": "2019-07-22T14:15:00+00:00",
+    "endDate": "2019-07-22T15:00:00+00:00"
+  },
+  {
+    "id": 8,
+    "price": 0,
+    "name": "Package-lock.json: Why? Should I commit it?",
+    "city": 6,
+    "startDate": "2019-09-13T19:00:00+00:00",
+    "endDate": "2019-09-13T20:00:00+00:00"
+  },
+  {
+    "id": 9,
+    "price": 32.20,
+    "name": "npm VS yarn",
+    "city": 2,
+    "startDate": "2019-07-17T12:00:00+00:00",
+    "endDate": "2019-07-17T14:00:00+00:00"
+  },
+  {
+    "id": 10,
+    "price": 0,
+    "name": "From Javascript to Typescript",
+    "city": 8,
+    "startDate": "2019-09-14T15:00:00+00:00",
+    "endDate": "2019-09-14T17:30:00+00:00"
+  },
+  {
+    "id": 11,
+    "price": 0,
+    "name": "Webpack: How to set it up from scratch",
+    "city": 3,
+    "startDate": "2019-08-27T22:00:00+00:00",
+    "endDate": "2019-08-27T23:00:00+00:00"
+  },
+  {
+    "id": 12,
+    "price": 24.5,
+    "name": "Tips and tricks to get focused working from home",
+    "city": 10,
+    "startDate": "2019-09-27T11:00:00+00:00",
+    "endDate": "2019-09-27T12:15:00+00:00"
+  },
+  {
+    "id": 13,
+    "price": 86.00,
+    "name": "POSTMAN: How to test a REST API",
+    "city": 4,
+    "startDate": "2019-09-22T04:00:00+00:00",
+    "endDate": "2019-09-22T05:45:00+00:00"
+  },
+  {
+    "id": 14,
+    "price": 0,
+    "name": "Typescript patterns",
+    "city": 9,
+    "startDate": "2019-09-03T15:00:00+00:00",
+    "endDate": "2019-09-03T18:00:00+00:00"
+  },
+  {
+    "id": 15,
+    "price": 67.00,
+    "name": "SASS: Do We still need it?",
+    "city": 5,
+    "startDate": "2019-09-26T16:00:00+00:00",
+    "endDate": "2019-09-26T16:45:00+00:00"
+  },
+  {
+    "id": 16,
+    "price": 0,
+    "name": "Diversity in tech: Tips for making your workplace more inclusive",
+    "city": 10,
+    "startDate": "2019-06-18T07:00:00+00:00",
+    "endDate": "2019-06-18T09:00:00+00:00"
+  },
+  {
+    "id": 17,
+    "price": 0,
+    "name": "Accesibility: The web for everyone",
+    "city": 3,
+    "startDate": "2019-08-25T22:00:00+00:00",
+    "endDate": "2019-08-25T23:20:00+00:00"
+  },
+  {
+    "id": 18,
+    "price": 45.9,
+    "name": "VueJS: Progressive framework",
+    "city": 2,
+    "startDate": "2019-09-27T04:00:00+00:00",
+    "endDate": "2019-09-27T07:00:00+00:00"
+  },
+  {
+    "id": 19,
+    "price": 0,
+    "name": "Clean code: How to refactor your projects",
+    "city": 1,
+    "startDate": "2019-07-14T14:00:00+00:00",
+    "endDate": "2019-07-14T15:00:00+00:00"
+  },
+  {
+    "id": 20,
+    "price": 76.30,
+    "name": "Front-end for back-end developers",
+    "city": 4,
+    "startDate": "2019-08-08T03:00:00+00:00",
+    "endDate": "2019-08-08T05:00:00+00:00"
+  },
+  {
+    "id": 21,
+    "price": 0,
+    "name": "UX for front-end developers",
+    "city": 9,
+    "startDate": "2019-08-05T18:15:00+00:00",
+    "endDate": "2019-08-05T19:15:00+00:00"
+  },
+  {
+    "id": 22,
+    "price": 90.5,
+    "name": "React: From scratch to master",
+    "city": 3,
+    "startDate": "2019-07-17T21:30:00+00:00",
+    "endDate": "2019-07-17T22:30:00+00:00"
+  },
+  {
+    "id": 23,
+    "price": 0,
+    "name": "GIT: Learn how to use it properly",
+    "city": 5,
+    "startDate": "2019-08-02T14:00:00+00:00",
+    "endDate": "2019-08-02T14:45:00+00:00"
+  },
+  {
+    "id": 24,
+    "price": 0,
+    "name": "Angular architecture",
+    "city": 9,
+    "startDate": "2019-09-16T22:00:00+00:00",
+    "endDate": "2019-09-16T23:15:00+00:00"
+  }
+]

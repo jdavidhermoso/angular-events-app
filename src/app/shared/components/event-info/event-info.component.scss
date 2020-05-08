@@ -1,0 +1,32 @@
+@import "../../../../styles/sizes";
+@import "../../../../styles/colors";
+@import "../../../../styles/media";
+
+:host {
+  display: flex;
+}
+
+.event__time {
+  flex-basis: 0;
+}
+
+.event__details {
+  flex-basis: 0;
+  flex-grow: 2;
+  margin-right: $standard-size;
+
+  &-extract {
+    margin-top: $standard-size;
+  }
+}
+
+.event__title {
+  font-weight: 400;
+  font-family: Courier, serif;
+  width: 100%;
+  word-break: break-word;
+}
+
+.event__duration {
+  white-space: nowrap;
+}

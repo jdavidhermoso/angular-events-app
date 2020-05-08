@@ -1,0 +1,35 @@
+<div class="confirmation__container" (keydown)="onRejectClicked()">
+  <div class="confirmation" (keydown)="onRejectClicked()">
+    <div class="confirmation__header">
+      <h3 class="title">
+        {{title}}
+      </h3>
+      <div class="confirmation__close-btn">
+      </div>
+    </div>
+    <div class="confirmation__body">
+      <p class="text">
+        {{text}}
+      </p>
+    </div>
+    <div class="confirmation__footer">
+      <app-button
+        (onClick)="onAcceptClicked()"
+        type="primary"
+        text="Accept">
+        Accept
+      </app-button>
+      <app-button
+        class="confirmation__reject-btn"
+        (onClick)="onRejectClicked()"
+        type="secondary"
+        text="Reject"></app-button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+

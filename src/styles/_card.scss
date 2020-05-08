@@ -1,0 +1,8 @@
+@import "./sizes";
+@import "./colors";
+
+.card {
+  padding: $standard-size;
+  border: 1px solid $grey;
+  border-radius: $border-radius;
+}
