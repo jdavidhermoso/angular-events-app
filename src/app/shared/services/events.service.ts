@@ -1,13 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { combineLatest, of } from 'rxjs';
+import { combineLatest, forkJoin, of } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import { map } from 'rxjs/operators';
-import { City, Event, ITechEvent } from '../models';
 import Rfilter from 'ramda/es/filter';
 import RfindIndex from 'ramda/es/findIndex';
 import RpropEq from 'ramda/es/propEq';
+import Rvalues from 'ramda/es/values';
+
+import { City, Event, TechEvent } from '../models';
 import { environment } from '../../../environments';
+import { groupByDay, sortEventsByDate } from '../helpers';
 
 const getEventDuration = (startDate: string, endDate: string) =>
   new Date(endDate).getTime() - new Date(startDate).getTime();
@@ -16,43 +19,47 @@ const getEventDuration = (startDate: string, endDate: string) =>
   providedIn: 'root'
 })
 export class EventsService {
-  private apiUrl: string = environment.production ? 'http://dev.juandavidhermoso.es/api/' :
-    'http://localhost:8080/';
   private localStorageMyEventsKey: string = 'myevents';
 
   constructor(private httpClient: HttpClient) {
   }
 
-  private transformEvents([locations, events]: [City[], Event[]]): ITechEvent[] {
+  private transformEvents([cities, events]: [City[], Event[]]): TechEvent[] {
     return events.map((event: Event) => {
-      const eventCity = locations.filter((city: City) => city.id === event.city)[0];
+      const eventCity = cities.filter((city: City) => city.id === event.city)[0];
 
       return {
         ...event,
         duration: getEventDuration(event.startDate, event.endDate),
-        city: eventCity
+        city: eventCity,
+        isFree: event.price > 0
       };
     });
   }
 
-  public getAllEvents(): Observable<ITechEvent[]> {
+  public getAllEvents(): Observable<Array<TechEvent[]>> {
     const cities$: Observable<City[]> = this.getCities();
-    const events$ = this.httpClient.get<Event[]>(`${this.apiUrl}techEvents`);
+    const events$ = this.httpClient.get<Event[]>(`${environment.apiURL}techEvents`);
 
-    return combineLatest(cities$, events$).pipe(
-      map(this.transformEvents)
+    return forkJoin(cities$, events$).pipe(
+      map(this.transformEvents),
+      map(
+        (techEvents: TechEvent[]): Array<TechEvent[]> => {
+          const groupedTechEvents: Array<TechEvent[]> = groupByDay(techEvents);
+          return sortEventsByDate(Rvalues(groupedTechEvents));
+        })
     );
   }
 
   public getCities(): Observable<City[]> {
-    return this.httpClient.get<Event[]>(`${this.apiUrl}locations`);
+    return this.httpClient.get<Event[]>(`${environment.apiURL}locations`);
   }
 
-  public getSignedUpEvents(): Observable<ITechEvent[]> {
+  public getSignedUpEvents(): Observable<TechEvent[]> {
     return of(JSON.parse(localStorage.getItem(this.localStorageMyEventsKey) || '[]'));
   }
 
-  public signUp(techEvent: ITechEvent): Observable<boolean> {
+  public signUp(techEvent: TechEvent): Observable<boolean> {
     try {
       const signedUpEvents = JSON.parse(localStorage.getItem(this.localStorageMyEventsKey) || '[]');
 
@@ -74,8 +81,8 @@ export class EventsService {
 
   public cancelAttendance(eventId: number): Observable<boolean> {
     try {
-      const signedUpEvents: ITechEvent[] = JSON.parse(localStorage.getItem(this.localStorageMyEventsKey) || '[]');
-      const filteredEvents: ITechEvent[] = Rfilter((techEvent: ITechEvent) =>
+      const signedUpEvents: TechEvent[] = JSON.parse(localStorage.getItem(this.localStorageMyEventsKey) || '[]');
+      const filteredEvents: TechEvent[] = Rfilter((techEvent: TechEvent) =>
         techEvent.id !== eventId, signedUpEvents);
 
       localStorage.setItem(this.localStorageMyEventsKey, JSON.stringify(filteredEvents));

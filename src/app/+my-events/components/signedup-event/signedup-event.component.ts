@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ITechEvent } from '../../../shared';
+import { TechEvent } from '../../../shared';
 
 @Component({
   selector: 'app-signedup-event',
@@ -8,7 +8,7 @@ import { ITechEvent } from '../../../shared';
 })
 export class SignedupEventComponent {
   @Input()
-  public eventItem: ITechEvent;
+  public eventItem: TechEvent;
 
   @Output()
   public onCancel: EventEmitter<void> = new EventEmitter<void>();

@@ -1,6 +1,6 @@
 export interface Event {
   id: number;
-  isFree: boolean;
+  price: number;
   name: string;
   city: number;
   startDate: string;

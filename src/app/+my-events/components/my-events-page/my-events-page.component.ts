@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { EventsService, ITechEvent } from '../../../shared';
+import { EventsService, TechEvent } from '../../../shared';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { RoutesEnum } from '../../../routes-labels.enum';
@@ -11,7 +11,7 @@ import { RoutesEnum } from '../../../routes-labels.enum';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MyEventsPageComponent {
-  public signedUpEvents: Observable<ITechEvent[]>;
+  public signedUpEvents: Observable<TechEvent[]>;
 
   constructor(private eventsService: EventsService,
               private router: Router) {
@@ -19,9 +19,10 @@ export class MyEventsPageComponent {
   }
 
   public onCancelEventAttendance(eventId: number): void {
-    this.eventsService.cancelAttendance(eventId).subscribe((response: boolean) => {
-      this.setSignedUpEvents();
-    });
+    this.eventsService.cancelAttendance(eventId)
+      .subscribe((response: boolean) => {
+        this.setSignedUpEvents();
+      });
   }
 
   public onCtaClicked() {

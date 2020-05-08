@@ -2,8 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import Rvalues from 'ramda/es/values';
 import Rfilter from 'ramda/es/filter';
 import Rflatten from 'ramda/es/flatten';
-import { map } from 'rxjs/operators';
-import { applyFilters, EventsService, Filter, groupByDay, ITechEvent, sortEventsByDate } from '../../../shared';
+import { applyFilters, EventsService, Filter, groupByDay, sortEventsByDate, TechEvent } from '../../../shared';
 import { ConfirmationService } from '../../../+confirmation';
 import { Subscription } from 'rxjs';
 
@@ -13,12 +12,11 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./all-events-page.component.scss']
 })
 export class AllEventsPageComponent implements OnInit, OnDestroy {
-  public eventsDays: Array<ITechEvent[]>;
-  public tempEventToConfirmSignUp: ITechEvent;
-  public filteredEventsDays: Array<ITechEvent[]> = [];
+  public eventsDays: Array<TechEvent[]>;
+  public tempEventToConfirmSignUp: TechEvent;
+  public filteredEventsDays: Array<TechEvent[]> = [];
   public toggleConfirmation: any;
 
-  private confirmationSubscription: Subscription;
   private filterSubscription: Subscription;
 
   constructor(private eventsService: EventsService,
@@ -27,23 +25,18 @@ export class AllEventsPageComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit(): void {
-    this.filterSubscription = this.eventsService.getAllEvents().pipe(
-      map(
-        (techEvents: ITechEvent[]): Array<ITechEvent[]> => {
-          const groupedTechEvents: Array<ITechEvent[]> = groupByDay(techEvents);
-          return sortEventsByDate(Rvalues(groupedTechEvents));
-        })
-    ).subscribe((eventsDays: Array<ITechEvent[]>) => {
-      this.eventsDays = eventsDays;
-      this.filteredEventsDays = [...this.eventsDays];
-    });
+    this.filterSubscription = this.eventsService.getAllEvents()
+      .subscribe((eventsDays: Array<TechEvent[]>) => {
+        this.eventsDays = eventsDays;
+        this.filteredEventsDays = [...this.eventsDays];
+      });
   }
 
   public ngOnDestroy(): void {
     this.filterSubscription.unsubscribe();
   }
 
-  public onEventSignUp(event: ITechEvent) {
+  public onEventSignUp(event: TechEvent) {
     this.setTempEventToConfirmSignUp(event);
     this.confirmationService.openConfirmation({
       title: event.name,
@@ -56,27 +49,27 @@ export class AllEventsPageComponent implements OnInit, OnDestroy {
   public onConfirmSignUp() {
     // In a real API I would send just the event id, not the whole object.
     this.eventsService.signUp(this.tempEventToConfirmSignUp);
-    this.emtyTempEvent();
+    this.emptyTempEvent();
   }
 
   public onRejectSignUp() {
-    this.emtyTempEvent();
+    this.emptyTempEvent();
   }
 
   public onFilter(filter: Filter) {
     const searchStr: string = filter.name ? filter.name.toLowerCase() : '';
     const onlyFree: boolean = filter.onlyFree;
     const filters = applyFilters(searchStr, onlyFree);
-    const groupedTechEvents: Array<ITechEvent[]> = groupByDay(Rfilter(filters, Rflatten(this.eventsDays)));
+    const groupedTechEvents: Array<TechEvent[]> = groupByDay(Rfilter(filters, Rflatten(this.eventsDays)));
 
     this.filteredEventsDays = sortEventsByDate(Rvalues(groupedTechEvents));
   }
 
-  private setTempEventToConfirmSignUp(event: ITechEvent): void {
-    this.tempEventToConfirmSignUp = event;
+  private setTempEventToConfirmSignUp(iTechEvent: TechEvent): void {
+    this.tempEventToConfirmSignUp = iTechEvent;
   }
 
-  private emtyTempEvent() {
+  private emptyTempEvent() {
     this.tempEventToConfirmSignUp = null;
   }
 }

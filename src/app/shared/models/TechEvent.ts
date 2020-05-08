@@ -1,6 +1,6 @@
 import { City } from './city';
 
-export interface ITechEvent {
+export interface TechEvent {
   id: number;
   isFree: boolean;
   name: string;
