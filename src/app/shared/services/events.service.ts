@@ -11,6 +11,8 @@ import Rvalues from 'ramda/es/values';
 import { City, Event, TechEvent } from '../models';
 import { environment } from '../../../environments';
 import { groupByDay, sortEventsByDate } from '../helpers';
+import { locationsMock } from '../../../../API/mocks/locationsMock';
+import { techEventsMock } from '../../../../API/mocks/tech-events-mock';
 
 const getEventDuration = (startDate: string, endDate: string) =>
   new Date(endDate).getTime() - new Date(startDate).getTime();
@@ -43,7 +45,9 @@ export class EventsService {
 
   public getAllEvents(): Observable<Array<TechEvent[]>> {
     const cities$: Observable<City[]> = this.getCities();
-    const events$ = this.httpClient.get<Event[]>(`${environment.apiURL}techEvents`);
+    const events$ = environment.production ?
+      this.httpClient.get<Event[]>(`${environment.apiURL}techEvents`) :
+      of(techEventsMock);
 
     return forkJoin(cities$, events$).pipe(
       map(this.transformEvents),
@@ -56,6 +60,10 @@ export class EventsService {
   }
 
   public getCities(): Observable<City[]> {
+    if (!environment.production) {
+      return of(locationsMock);
+    }
+
     return this.httpClient.get<Event[]>(`${environment.apiURL}locations`);
   }
 

@@ -15,4 +15,4 @@ Run `npm run server` for a mocked API that will serve `tech-events` and `locatio
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
 ## Demo
-[http://dev.juandavidhermoso.es](http://dev.juandavidhermoso.es)
+[Demo here!](http://angular-events-app.s3-website.eu-west-3.amazonaws.com)
