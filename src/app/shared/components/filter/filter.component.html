@@ -14,7 +14,7 @@
     <div class="form__section">
       <label>
         <input type="checkbox"
-               (change)="onFilter.emit(formGroup.value)"
+               (change)="onFilter()"
                [formControl]="freeEventControl"/>
         Free
       </label>

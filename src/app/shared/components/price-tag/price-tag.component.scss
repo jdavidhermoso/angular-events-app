@@ -4,7 +4,7 @@
 
 :host {
   @include eventTag();
-  background-color: $accent-light;
-  border: 2px solid $accent;
-  color: $white;
+  background-color: $primary-light;
+  border: 2px solid $primary;
+  color: #fff;
 }

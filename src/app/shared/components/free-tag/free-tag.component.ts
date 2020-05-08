@@ -6,7 +6,4 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   styleUrls: ['./free-tag.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FreeTagComponent {
-  @Input()
-  public isFree: boolean;
-}
+export class FreeTagComponent {}

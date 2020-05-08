@@ -16,6 +16,10 @@
     </app-button>
   </app-event-actions>
   <app-free-tag
-    *ngIf="eventItem.isFree"
-    [isFree]="eventItem.isFree"></app-free-tag>
+    *ngIf="eventItem.isFree"></app-free-tag>
+  <app-price-tag
+    *ngIf="!eventItem.isFree"
+    [price]="eventItem.price">
+  </app-price-tag>
+
 </div>

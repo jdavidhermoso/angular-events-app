@@ -8,4 +8,5 @@ export interface TechEvent {
   startDate: string;
   endDate: string;
   duration: number;
+  price: number;
 }

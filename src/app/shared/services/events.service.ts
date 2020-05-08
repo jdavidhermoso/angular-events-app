@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { combineLatest, forkJoin, of } from 'rxjs';
+import { forkJoin, of } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import { map } from 'rxjs/operators';
 import Rfilter from 'ramda/es/filter';
@@ -29,10 +29,14 @@ export class EventsService {
       const eventCity = cities.filter((city: City) => city.id === event.city)[0];
 
       return {
-        ...event,
+        id: event.id,
+        price: event.price,
+        startDate: event.startDate,
+        endDate: event.endDate,
+        name: event.name,
         duration: getEventDuration(event.startDate, event.endDate),
         city: eventCity,
-        isFree: event.price > 0
+        isFree: event.price === 0
       };
     });
   }

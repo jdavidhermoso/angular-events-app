@@ -10,7 +10,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 })
 export class FilterComponent implements OnInit {
   @Output()
-  public onFilter: EventEmitter<Filter> = new EventEmitter<Filter>();
+  public filterApplied: EventEmitter<Filter> = new EventEmitter<Filter>();
 
   public formGroup: FormGroup;
   public nameControl: FormControl = new FormControl();
@@ -26,13 +26,15 @@ export class FilterComponent implements OnInit {
 
     this.nameControl.valueChanges.pipe(debounceTime(500),
       distinctUntilChanged()
-    ).subscribe(() => {
-      this.onFilter.emit(this.formGroup.value);
-    });
+    ).subscribe(() => (this.onFilter()));
+  }
+
+  public onFilter() {
+    this.filterApplied.emit(this.formGroup.value);
   }
 
   public resetFilter(): void {
-    this.onFilter.emit({
+    this.filterApplied.emit({
       name: '',
       onlyFree: false,
       timeRange: 'ALL'

@@ -1,6 +1,6 @@
 # Tech events SPA
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.2.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.4.
 
 ## Install dependencies
 Run `npm i` to install all necessary dependencies

@@ -8,7 +8,7 @@
   (onReject)="onRejectSignUp()">
 </app-sign-up-confirmation-modal>
 <app-filter
-  (onFilter)="onFilter($event)"
+  (filterApplied)="onFilter($event)"
 ></app-filter>
 <app-events-list>
   <p class="events__results-number text" *ngIf="filteredEventsDays.length">

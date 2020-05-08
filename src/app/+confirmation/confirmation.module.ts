@@ -1,8 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ConfirmationComponent } from './components';
+import { ConfirmationComponent, SignUpConfirmationModalComponent } from './components';
 import { SharedModule } from '../shared/shared.module';
-import { SignUpConfirmationModalComponent } from './components/sign-up-confirmation-modal';
 
 @NgModule({
   declarations: [

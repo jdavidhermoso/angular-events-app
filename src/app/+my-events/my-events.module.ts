@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
-import { MyEventsPageComponent } from './components';
+import { MyEventsPageComponent, SignedupEventComponent } from './components';
 import { SharedModule } from '../shared/shared.module';
 import { CommonModule, DatePipe } from '@angular/common';
-import { SignedupEventComponent } from './components/signedup-event/signedup-event.component';
 
 const routes: Route[] = [
   {
